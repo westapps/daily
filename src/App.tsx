@@ -1,26 +1,34 @@
+import {
+  IonApp,
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/react';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Workspace from './pages/Workspace';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => (
+  <IonApp>
+    <Router>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Ionic React App</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/workspace/*" element={<Workspace />} />
+          <Route path="/" element={<Login />} />
+        </Routes>
+      </IonContent>
+    </Router>
+  </IonApp>
+);
 
 export default App;
